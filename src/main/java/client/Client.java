@@ -1,11 +1,10 @@
 package client;
 
-import csgo.ICsgoServer;
+import csgo.ICsServer;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public class Client {
@@ -15,7 +14,7 @@ public class Client {
         core.Distante hello = (core.Distante) server.lookup("Hello");
 
         hello.sayHello();
-        csgo.ICsgoServer csgo = (csgo.ICsgoServer) server.lookup("Csgo");
+        ICsServer csgo = (ICsServer) server.lookup("Csgo");
         csgo.connect("Drym");
     }
 }
