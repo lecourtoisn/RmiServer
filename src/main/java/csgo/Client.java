@@ -8,6 +8,6 @@ import java.rmi.RemoteException;
 public class Client {
     public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException {
         core.IServer server = (core.IServer) Naming.lookup("rmi://localhost:4000/Registry");
-        server.bind("Csgo", new CsgoConnetionServer());
+        server.bind("Csgo", new CsgoServer());
     }
 }
