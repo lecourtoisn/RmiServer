@@ -1,4 +1,4 @@
-package core.classserver;
+package classserver;
 
 /**
  * ClassServer is an abstract class that provides the

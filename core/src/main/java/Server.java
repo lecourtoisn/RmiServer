@@ -1,16 +1,13 @@
-package core;
-
 import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Server extends UnicastRemoteObject implements IServer {
-    private Map<String, Remote> binding;
+    private Map<String, Serializable> binding;
 
     protected Server() throws RemoteException {
         this.binding = new HashMap<>();
@@ -22,7 +19,7 @@ public class Server extends UnicastRemoteObject implements IServer {
     }
 
     @Override
-    public void bind(String key, Remote distantObject) throws RemoteException {
+    public void bind(String key, Serializable distantObject) throws RemoteException {
         /*
         * Associate the key to the object in the map
         * Download the classes and store them
@@ -31,7 +28,7 @@ public class Server extends UnicastRemoteObject implements IServer {
     }
 
     @Override
-    public Remote lookup(String key) throws RemoteException {
+    public Serializable lookup(String key) throws RemoteException {
         /*
          * Check in the map if the object has already been stored
          * Return it
@@ -39,11 +36,11 @@ public class Server extends UnicastRemoteObject implements IServer {
         return binding.get(key);
     }
 
-    public Map<String, Remote> getBinding() throws RemoteException {
+    public Map<String, Serializable> getBinding() throws RemoteException {
         return binding;
     }
 
-    public void setBinding(Map<String, Remote> binding) throws RemoteException {
+    public void setBinding(Map<String, Serializable> binding) throws RemoteException {
         this.binding = binding;
     }
 

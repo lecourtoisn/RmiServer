@@ -1,4 +1,4 @@
-package core.classserver;
+package classserver;
 
 /**
  * The ClassFileServer implements a ClassServer that
