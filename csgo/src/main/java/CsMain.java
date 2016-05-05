@@ -24,8 +24,8 @@ public class CsMain {
         */
         IServer server = (IServer) Naming.lookup("rmi://localhost:4000/Registry");
         CsServer cs = new CsServer();
-        Test t = new Test();
-        server.bind("t", t);
+
+        server.bind("Csgo", cs);
 
     }
 }
