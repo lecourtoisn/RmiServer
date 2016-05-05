@@ -14,6 +14,7 @@ public class CsMain {
         CsServer cs = new CsServer();
 
         server.bind("Csgo", cs);
+        server.bind("Ladder", new Ladder());
 
     }
 }
