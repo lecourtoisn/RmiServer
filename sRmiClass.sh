@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd rmiRunDir
+cd core/target/classes
 ls .
 ls
 echo "Running rmiregistry on port 4000"

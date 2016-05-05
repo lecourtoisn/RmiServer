@@ -1,6 +1,7 @@
 import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
+import java.rmi.RMISecurityManager;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.HashMap;
@@ -8,7 +9,7 @@ import java.util.Map;
 
 /*
 * Options
-* -Djava.rmi.server.codebase=http://Wheatley:2001/
+* -Djava.rmi.server.codebase=http://DESKTOP-OHAS6O1:2001/ -Djava.security.policy="core/secPolicy.policy"
 * */
 public class Server extends UnicastRemoteObject implements IServer {
     private Map<String, Serializable> binding;
@@ -49,6 +50,15 @@ public class Server extends UnicastRemoteObject implements IServer {
     }
 
     public static void main(String[] args) throws RemoteException, MalformedURLException {
+
+        if (System.getSecurityManager() == null) {
+            System.setSecurityManager(new RMISecurityManager());
+            System.out.println("Security manager installed.");
+        }
+        else {
+            System.out.println("Security manager already exists.");
+        }
+
         IServer server = new Server();
         Naming.rebind("rmi://localhost:4000/Registry", server);
 
