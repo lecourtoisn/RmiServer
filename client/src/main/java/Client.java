@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 
 /*
 * Options
-* -Djava.security.policy="C:\Users\Nicolas\Documents\Java\RmiServer\client\secPolicy" // Pas sur que ça soit utile ça. Même sur que ça l'est pas
+* No options
 * */
 public class Client {
 
