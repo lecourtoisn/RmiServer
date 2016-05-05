@@ -3,6 +3,10 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
+/*
+* Options
+* -Djava.security.policy="C:\Users\Nicolas\Documents\Java\RmiServer\client\secPolicy"
+* */
 public class Client {
 
     public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException {

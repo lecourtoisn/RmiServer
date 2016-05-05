@@ -6,6 +6,10 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+* Options
+* -Djava.rmi.server.codebase=http://Wheatley:2001/
+* */
 public class Server extends UnicastRemoteObject implements IServer {
     private Map<String, Serializable> binding;
 
