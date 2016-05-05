@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+echo "nique tes morts"
 cd rmiRunDir
 ls .
 ls
