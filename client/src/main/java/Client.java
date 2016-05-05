@@ -11,12 +11,10 @@ public class Client {
 
     public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException {
         IServer server = (IServer) Naming.lookup("rmi://localhost:4000/Registry");
-        /*Distante hello = (Distante) server.lookup("Hello");
 
-        hello.sayHello();*/
-
-        ICsServer csgo = (ICsServer) server.lookup("Csgo");
-        csgo.connect("Drym");
+        Service csgo = (Service) server.lookup("Csgo");
+        System.out.println(csgo.getInfo());
+        csgo.accessService();
     }
 }
 

@@ -1,7 +1,7 @@
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class CsServer extends UnicastRemoteObject implements ICsServer {
+public class CsServer extends UnicastRemoteObject implements Service {
     protected CsServer() throws RemoteException {
     }
 
@@ -10,8 +10,12 @@ public class CsServer extends UnicastRemoteObject implements ICsServer {
     }
 
     @Override
-    public boolean connect(String pseudo) throws RemoteException {
+    public String getInfo() throws RemoteException {
+        return "Mega serveur de CSGO";
+    }
+
+    @Override
+    public void accessService() throws RemoteException {
         System.out.println("Connection ... Connected!");
-        return true;
     }
 }
