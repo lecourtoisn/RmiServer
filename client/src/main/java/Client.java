@@ -27,6 +27,17 @@ public class Client {
         System.out.println(csgo.getInfo());
         csgo.accessService();
         System.out.println(ladder.getData());
+
+        for (String s : (server.getLastInfos(1))) {
+            System.out.println(s);
+        }
+        for (String s : (server.getLastService(1))) {
+            System.out.println(s);
+        }
+
+        for (String s : (server.getLastService(2000000))) {
+            System.out.println(s);
+        }
     }
 }
 
