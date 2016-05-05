@@ -48,6 +48,6 @@ public class Server extends UnicastRemoteObject implements IServer {
         IServer server = new Server();
         Naming.rebind("rmi://localhost:4000/Registry", server);
 
-        server.bind("Hello", new ObjetDistant());
+//        server.bind("Hello", new ObjetDistant());
     }
 }
