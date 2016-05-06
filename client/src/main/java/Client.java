@@ -1,3 +1,6 @@
+import org.apache.activemq.ActiveMQConnectionFactory;
+
+import javax.jms.*;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -10,7 +13,13 @@ import java.rmi.RemoteException;
 * */
 public class Client {
 
-    public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException {
+    public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException, JMSException {
+        ConnectionFactory factory = new ActiveMQConnectionFactory("user","user","tcp://localhost:61616/");
+        javax.jms.Connection connection = factory.createConnection("user", "user");
+        Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+
+        connection.start();
+
         if (System.getSecurityManager() == null) {
             System.setSecurityManager(new RMISecurityManager());
             System.out.println("Security manager installed.");
@@ -35,8 +44,17 @@ public class Client {
             System.out.println(s);
         }
 
-        for (String s : (server.getLastService(2000000))) {
+        /*for (String s : (server.getLastService(2000000))) {
             System.out.println(s);
+        }*/
+
+        String queueName = csgo.subscribe();
+
+        Queue queue = session.createQueue(queueName);
+        MessageConsumer consumer = session.createConsumer(queue);
+        while(true) {
+            TextMessage messageRecu = (TextMessage) consumer.receive();
+            System.out.println(messageRecu.getText());
         }
     }
 }

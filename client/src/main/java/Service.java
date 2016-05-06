@@ -4,4 +4,5 @@ import java.rmi.RemoteException;
 public interface Service extends Remote {
     String getInfo() throws RemoteException;
     void accessService() throws RemoteException;
+    String subscribe() throws RemoteException;
 }
