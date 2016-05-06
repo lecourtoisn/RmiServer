@@ -24,6 +24,7 @@
         <module>core</module>
         <module>csgo</module>
         <module>client</module>
+        <module>clientbis</module>
     </modules>
 
 </project>

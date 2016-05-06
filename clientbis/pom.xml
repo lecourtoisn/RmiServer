@@ -9,11 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>csgo</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>../overwatch</module>
-    </modules>
+    <artifactId>clientbis</artifactId>
 
 
 </project>

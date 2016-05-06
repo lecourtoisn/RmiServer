@@ -1,7 +1,6 @@
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
-import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -12,7 +11,7 @@ import java.rmi.RemoteException;
 * Options
 * -Djava.security.policy="client/secPolicy.policy" -Djava.rmi.server.codebase=http://DESKTOP-OHAS6O1:2001/
 * */
-public class Client {
+public class ClientBis {
 
     public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException, JMSException {
         ConnectionFactory factory = new ActiveMQConnectionFactory("user","user","tcp://localhost:61616/");
@@ -33,34 +32,10 @@ public class Client {
         IServer server = (IServer) Naming.lookup("rmi://localhost:4000/Registry");
 
         Service csgo = (Service) server.lookup("Csgo");
-        Service overwatch = (Service) server.lookup("Overwatch");
         Data ladder = (Data) server.lookup("Ladder");
-        Serializable sNews = server.lookup("News");
-
-
-
-
         System.out.println(csgo.getInfo());
-        System.out.println(overwatch.getInfo());
         csgo.accessService();
-        overwatch.accessService();
         System.out.println(ladder.getData());
-        //System.out.println(news.getData());
-        try {
-            Service news = (Service) sNews;
-            news.accessService();
-        } catch (ClassCastException e) {
-            System.out.println("Not a service");
-            Data news = (Data) sNews;
-            System.out.println(news.getData());
-        }
-
-        for (String s : (server.getLastInfos(1))) {
-            System.out.println(s);
-        }
-        for (String s : (server.getLastService(1))) {
-            System.out.println(s);
-        }
 
         String queueName = csgo.subscribe();
 

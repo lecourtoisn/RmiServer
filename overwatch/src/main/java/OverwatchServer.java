@@ -1,27 +1,27 @@
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
-import java.net.ConnectException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CsServer extends UnicastRemoteObject implements Service {
+
+public class OverwatchServer extends UnicastRemoteObject implements Service {
 
     private List<Queue> queues;
 
-    public final static String QUEUENAME = "csQueue";
+    public final static String QUEUENAME = "overwatchQueue";
     private int clientCt;
     transient private Session s;
 
-    protected CsServer() throws RemoteException {
+    protected OverwatchServer() throws RemoteException {
         queues = new ArrayList<>();
         clientCt = 0;
         initConnexion();
     }
 
-    protected CsServer(int port) throws RemoteException {
+    protected OverwatchServer(int port) throws RemoteException {
         super(port);
         queues = new ArrayList<>();
         clientCt = 0;
@@ -42,12 +42,12 @@ public class CsServer extends UnicastRemoteObject implements Service {
 
     @Override
     public String getInfo() throws RemoteException {
-        return "Mega serveur de CSGO";
+        return "Mega serveur de Overwatch";
     }
 
     @Override
     public void accessService() throws RemoteException {
-        System.out.println("Connection ... Connected!");
+        System.out.println("Connection ... Connected to Overwatch!");
     }
 
     @Override

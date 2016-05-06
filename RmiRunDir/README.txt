@@ -1,0 +1,1 @@
+Directory where the rmiregistry runs
