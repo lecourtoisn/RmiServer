@@ -13,7 +13,7 @@ public class OverwatchMain {
         IServer server = (IServer) Naming.lookup("rmi://localhost:4000/Registry");
         OverwatchServer cs = new OverwatchServer();
 
-        server.bind("Overwatch", cs);
+        server.bind("Clock", cs);
         server.bind("News", new News());
 
         long time = System.currentTimeMillis();

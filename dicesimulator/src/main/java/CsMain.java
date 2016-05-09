@@ -12,7 +12,7 @@ public class CsMain {
         IServer server = (IServer) Naming.lookup("rmi://localhost:4000/Registry");
         CsServer cs = new CsServer();
 
-        server.bind("Csgo", cs);
+        server.bind("Dice", cs);
         server.bind("SomeData", new SomeData());
     }
 }

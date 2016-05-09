@@ -23,6 +23,7 @@ public class ClientBis {
         if (System.getSecurityManager() == null) {
             System.setSecurityManager(new RMISecurityManager());
             System.out.println("Security manager installed.");
+
         }
         else {
             System.out.println("Security manager already exists.");
@@ -31,8 +32,8 @@ public class ClientBis {
 
         IServer server = (IServer) Naming.lookup("rmi://localhost:4000/Registry");
 
-        Service csgo = (Service) server.lookup("Csgo");
-        Data ladder = (Data) server.lookup("Ladder");
+        Service csgo = (Service) server.lookup("Dice");
+        Data ladder = (Data) server.lookup("SomeData");
         System.out.println(csgo.getInfo());
         csgo.accessService();
         System.out.println(ladder.getData());

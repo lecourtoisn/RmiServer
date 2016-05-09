@@ -12,7 +12,7 @@
     <artifactId>csgo</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>../overwatch</module>
+        <module>../talkingclock</module>
     </modules>
 
 

@@ -31,8 +31,8 @@ public class Client {
 
         IServer server = (IServer) Naming.lookup("rmi://localhost:4000/Registry");
 
-        Service csgo = (Service) server.lookup("Csgo");
-        Service overwatch = (Service) server.lookup("Overwatch");
+        Service csgo = (Service) server.lookup("Dice");
+        Service overwatch = (Service) server.lookup("Clock");
         Data someData = (Data) server.lookup("SomeData");
         Serializable sNews = server.lookup("News");
 
