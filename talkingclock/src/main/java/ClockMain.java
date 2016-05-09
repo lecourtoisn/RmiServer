@@ -8,10 +8,10 @@ import java.util.Date;
 * Options :
 * -Djava.rmi.server.codebase=http://DESKTOP-OHAS6O1:2001/
 * */
-public class OverwatchMain {
+public class ClockMain {
     public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException {
         IServer server = (IServer) Naming.lookup("rmi://localhost:4000/Registry");
-        OverwatchServer cs = new OverwatchServer();
+        ClockServer cs = new ClockServer();
 
         server.bind("Clock", cs);
         server.bind("News", new News());

@@ -2,28 +2,28 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
 import java.io.Serializable;
+import java.net.ConnectException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
-
-public class OverwatchServer extends UnicastRemoteObject implements Service {
+public class DiceServer extends UnicastRemoteObject implements Service {
 
     private List<Queue> queues;
 
-    public final static String QUEUENAME = "overwatchQueue";
+    public final static String QUEUENAME = "randomQueue";
     private int clientCt;
     transient private Session s;
 
-    protected OverwatchServer() throws RemoteException {
+    protected DiceServer() throws RemoteException {
         queues = new ArrayList<>();
         clientCt = 0;
         initConnexion();
     }
 
-    protected OverwatchServer(int port) throws RemoteException {
+    protected DiceServer(int port) throws RemoteException {
         super(port);
         queues = new ArrayList<>();
         clientCt = 0;
@@ -44,12 +44,13 @@ public class OverwatchServer extends UnicastRemoteObject implements Service {
 
     @Override
     public String getInfo() throws RemoteException {
-        return "Online clock";
+        return "Random number generator";
     }
 
     @Override
     public Serializable accessService() throws RemoteException {
-        return new Date().toString();
+        Random rand = new Random();
+        return rand.nextInt(100);
     }
 
     @Override

@@ -3,7 +3,7 @@ package classserver;
 /**
  * The ClassFileServer implements a ClassServer that
  * reads class files from the file system. See the
- * doc for the "CsMain" method for how to run this
+ * doc for the "DiceMain" method for how to run this
  * server.
  */
 public class ClassFileServer extends ClassServer {
@@ -76,7 +76,7 @@ public class ClassFileServer extends ClassServer {
 
 
   /**
-   * CsMain method to create the class server that reads
+   * DiceMain method to create the class server that reads
    * class files. This takes two optional command line arguments, the
    * port on which the server accepts requests and the
    * root of the classpath. To start up the server: <br><br>
