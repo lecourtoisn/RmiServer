@@ -13,7 +13,7 @@ public class ClockServer extends UnicastRemoteObject implements Service {
 
     private List<Queue> queues;
 
-    public final static String QUEUENAME = "overwatchQueue";
+    public final static String QUEUENAME = "clockQueue";
     private int clientCt;
     transient private Session s;
 
