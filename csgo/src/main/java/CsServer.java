@@ -1,17 +1,19 @@
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
+import java.io.Serializable;
 import java.net.ConnectException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class CsServer extends UnicastRemoteObject implements Service {
 
     private List<Queue> queues;
 
-    public final static String QUEUENAME = "csQueue";
+    public final static String QUEUENAME = "randomQueue";
     private int clientCt;
     transient private Session s;
 
@@ -42,12 +44,13 @@ public class CsServer extends UnicastRemoteObject implements Service {
 
     @Override
     public String getInfo() throws RemoteException {
-        return "Mega serveur de CSGO";
+        return "Random number generator";
     }
 
     @Override
-    public void accessService() throws RemoteException {
-        System.out.println("Connection ... Connected!");
+    public Serializable accessService() throws RemoteException {
+        Random rand = new Random();
+        return rand.nextInt(100);
     }
 
     @Override

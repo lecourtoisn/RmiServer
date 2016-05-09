@@ -29,23 +29,25 @@ public class Client {
             System.out.println("Security manager already exists.");
         }
 
-
         IServer server = (IServer) Naming.lookup("rmi://localhost:4000/Registry");
 
         Service csgo = (Service) server.lookup("Csgo");
         Service overwatch = (Service) server.lookup("Overwatch");
-        Data ladder = (Data) server.lookup("Ladder");
+        Data someData = (Data) server.lookup("SomeData");
         Serializable sNews = server.lookup("News");
-
-
-
 
         System.out.println(csgo.getInfo());
         System.out.println(overwatch.getInfo());
-        csgo.accessService();
-        overwatch.accessService();
-        System.out.println(ladder.getData());
-        //System.out.println(news.getData());
+        /* Random generator */
+        System.out.println(csgo.accessService());
+        System.out.println(csgo.accessService());
+
+        /* Clock */
+        System.out.println(overwatch.accessService());
+
+        /*  */
+        System.out.println(someData.getData());
+
         try {
             Service news = (Service) sNews;
             news.accessService();
@@ -62,7 +64,7 @@ public class Client {
             System.out.println(s);
         }
 
-        String queueName = csgo.subscribe();
+        String queueName = overwatch.subscribe();
 
         Queue queue = session.createQueue(queueName);
         MessageConsumer consumer = session.createConsumer(queue);

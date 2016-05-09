@@ -4,6 +4,6 @@ public class News implements Data {
 
     @Override
     public String getData() {
-        return "Ober sucks";
+        return "2016 is a leap year !";
     }
 }

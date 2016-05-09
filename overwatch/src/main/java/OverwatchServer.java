@@ -1,9 +1,11 @@
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
+import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -42,12 +44,12 @@ public class OverwatchServer extends UnicastRemoteObject implements Service {
 
     @Override
     public String getInfo() throws RemoteException {
-        return "Mega serveur de Overwatch";
+        return "Online clock";
     }
 
     @Override
-    public void accessService() throws RemoteException {
-        System.out.println("Connection ... Connected to Overwatch!");
+    public Serializable accessService() throws RemoteException {
+        return new Date().toString();
     }
 
     @Override
