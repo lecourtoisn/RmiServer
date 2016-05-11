@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class DiceServer extends UnicastRemoteObject implements Service {
+public class DiceServer extends CallBackService {
 
     private List<Queue> queues;
 
@@ -18,13 +18,6 @@ public class DiceServer extends UnicastRemoteObject implements Service {
     transient private Session s;
 
     protected DiceServer() throws RemoteException {
-        queues = new ArrayList<>();
-        clientCt = 0;
-        initConnexion();
-    }
-
-    protected DiceServer(int port) throws RemoteException {
-        super(port);
         queues = new ArrayList<>();
         clientCt = 0;
         initConnexion();

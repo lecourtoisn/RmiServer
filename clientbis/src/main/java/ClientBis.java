@@ -32,16 +32,20 @@ public class ClientBis {
 
         IServer server = (IServer) Naming.lookup("rmi://localhost:4000/Registry");
 
-        Service csgo = (Service) server.lookup("Dice");
+        System.out.println(server.lookup("Dice").getClass());
+        ICallBackService diceService = (ICallBackService) server.lookup("Dice");
         Data ladder = (Data) server.lookup("SomeData");
-        System.out.println(csgo.getInfo());
-        csgo.accessService();
+        System.out.println(diceService.getInfo());
+        diceService.accessService();
         System.out.println(ladder.getData());
 
-        String queueName = csgo.subscribe();
+        String queueName = diceService.subscribe();
 
         Queue queue = session.createQueue(queueName);
         MessageConsumer consumer = session.createConsumer(queue);
+
+        System.out.println("Demande de rappel : " + (diceService.callMeBack(new RemoteClass()) ? "acceptee" : "refusee"));
+
         while(true) {
             TextMessage messageRecu = (TextMessage) consumer.receive();
             System.out.println(messageRecu.getText());

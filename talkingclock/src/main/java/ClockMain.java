@@ -12,6 +12,7 @@ public class ClockMain {
         server.bind("Clock", cs);
         server.bind("News", new News());
 
+        System.out.println("On publie des donnees (elles seront capturees dans le main de Client)");
         long time = System.currentTimeMillis();
         while(true) {
             if (System.currentTimeMillis() - time > 3 * 1000) {
