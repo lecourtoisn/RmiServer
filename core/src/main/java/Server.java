@@ -29,12 +29,15 @@ public class Server extends UnicastRemoteObject implements IServer {
         this.serviceTags = new ArrayList<>();
     }
 
+/*
     @Override
     public void bind(String key, Serializable distantObject) throws RemoteException {
-        /*
+        */
+/*
         * Associate the key to the object in the map
         * Download the classes and store them
-        * */
+        * *//*
+
         binding.put(key, distantObject);
         if (distantObject instanceof Data) {
             System.out.println("Added to dataTags");
@@ -43,6 +46,27 @@ public class Server extends UnicastRemoteObject implements IServer {
             System.out.println("Added to serviceTag");
             serviceTags.add(0, key);
         }
+    }
+*/
+
+    @Override
+    public void bind(String key, Service distantObject) throws RemoteException {
+        System.out.println("Binding of a service");
+        binding.put(key, distantObject);
+        serviceTags.add(0, key);
+    }
+
+    @Override
+    public void bind(String key, Data distantObject) throws RemoteException {
+        System.out.println("Binding of a data");
+        binding.put(key, distantObject);
+        dataTags.add(0, key);
+    }
+
+    @Override
+    public void bind(String key, AccessRemote distantObject) throws RemoteException {
+        System.out.println("Binding of a \"Callback-able\" distant object");
+        binding.put(key, distantObject);
     }
 
     @Override
