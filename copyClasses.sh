@@ -6,3 +6,5 @@ cp dicesimulator/target/classes/SomeData.class classesHost/
 cp talkingclock/target/classes/News.class classesHost/
 cp dicesimulator/target/classes/ICallBackService.class classesHost/
 cp dicesimulator/target/classes/AccessRemote.class classesHost/
+cp core/target/classes/Data.class classesHost/
+cp core/target/classes/Service.class classesHost/
